@@ -1,0 +1,77 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "PQL",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#variables"
+		},
+		{
+			"include": "#references"
+		},
+		{
+			"include": "#core_functions"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"strings": {
+			"name": "string.quoted.double.pql",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.pql",
+					"match": "\\\\."
+				}
+			]
+		},
+		"core_functions": {
+			"patterns": [
+				{
+					"comment": "Built-in functions",
+					"match": "\\b(group|alias|min|count|max|min|average|percentile|open|assert|as|where|when|what|window|filter|math|sort|correlate|head|tail|print|chart|merge|out)",
+					"name": "support.function.builtin.pql"
+				}
+			]
+		},
+		"variables": {
+			"patterns": [
+				{
+					"comment": "Variables",
+					"match": "\\$([A-Za-z-0-9-_]+([[0-9]*])*(\\.)*)+",
+					"name": "variable.other.declaration.pql"
+				}
+			]
+		},
+		"references": {
+			"patterns": [
+				{
+					"comment": "References",
+					"match": "@([A-Za-z-0-9-_]+([[0-9]*])*(\\.)*)+",
+					"name": "entity.name.type.pql"
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"comment": "Line comments",
+					"begin": "//",
+					"beginCaptures": {
+					"0": 	{
+						"name": "punctuation.definition.comment.pql"
+						}
+					},
+					"end": "$",
+					"name": "comment.line.double-slash.pql"
+				}
+			]
+		}
+	},
+	"scopeName": "source.pql"
+}

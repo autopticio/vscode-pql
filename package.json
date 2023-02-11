@@ -1,0 +1,90 @@
+{
+  "name": "pql",
+  "displayName": "PQL",
+  "description": "PQL Programming Language & Runtime Access",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "author": {
+    "name": "PQL Engineers at Autoptic"
+},
+"publisher": "Autoptic",
+"license": "MIT",
+"icon": "media/logo.png",
+"galleryBanner": {
+    "color": "#F2F2F2",
+    "theme": "light"
+},
+"private": true,
+"repository": {
+    "type": "git",
+    "url": "https://github.com/autopticio/vscode-pql"
+},
+"bugs": {
+    "url": "https://github.com/autopticio/vscode-pql/issues"
+},
+  "categories": ["Programming Languages"],
+  "main": "./extension.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.75.0",
+    "@types/glob": "^8.0.1",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "eslint": "^8.33.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.4",
+    "@vscode/test-electron": "^2.2.2"
+  },
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "PQL",
+      "properties": {
+        "pql.epid": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "PQL API Access Endpoint ID. Get a [free endpoint](https://www.autoptic.io#signup).",
+          "scope": "resource"
+        },
+        "pql.timeout": {
+          "type": "number",
+          "default": 10000,
+          "markdownDescription": "PQL API request timeout",
+          "scope": "resource"
+        }
+      }
+    },
+    "languages": [{
+      "id": "pql",
+      "aliases": ["PQL", "pql"],
+      "extensions": [".pql"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "pql",
+      "scopeName": "source.pql",
+      "path": "./syntaxes/pql.tmLanguage.json"
+    }],
+    "commands": [{
+      "command": "pql.run",
+      "title": "PQL Run",
+      "icon": "$(debug-start)",
+      "enablement": "resourceLangId == pql"
+    }],
+    "menus": {
+      "editor/title/run": [
+        {
+          "command": "pql.run",
+          "when": "resourceLangId == pql && !inDiffEditor"
+        }
+      ]
+    }
+  }
+}
