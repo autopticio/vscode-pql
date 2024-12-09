@@ -34,7 +34,7 @@
 			"patterns": [
 				{
 					"comment": "Built-in functions",
-					"match": "\\b(group|request|min|count|max|min|average|percentile|open|assert|as|where|when|what|window|filter|math|sort|correlate|head|tail|print|chart|merge|out)",
+					"match": "\\b(group|request|min|count|max|min|average|percentile|open|assert|as|where|when|what|window|filter|math|note|sort|correlate|compare|head|split|style|tail|print|chart|merge|out)",
 					"name": "support.function.builtin.pql"
 				}
 			]
@@ -60,15 +60,31 @@
 		"comments": {
 			"patterns": [
 				{
+					"name": "comment.block.pql",
+					"comment": "Block comments",
+					"begin": "/\\*",
+					"beginCaptures": {
+						"1": {
+							"name": "punctuation.definition.comment.pql"
+						}
+					},
+					"end": "\\*/",
+					"endCaptures": {
+						"1": {
+							"name": "punctuation.definition.comment.pql"
+						}
+					}
+				},
+				{
+					"name": "comment.line.double-slash.pql",
 					"comment": "Line comments",
 					"begin": "//",
 					"beginCaptures": {
-					"0": 	{
-						"name": "punctuation.definition.comment.pql"
+						"0": {
+							"name": "punctuation.definition.comment.pql"
 						}
 					},
-					"end": "$",
-					"name": "comment.line.double-slash.pql"
+					"end": "$"
 				}
 			]
 		}
