@@ -30,9 +30,9 @@ function activate(context) {
         if (vscode.workspace.workspaceFolders !== undefined) {
 
             let wf = vscode.workspace.workspaceFolders[0].uri;
-            let varsUri = vscode.Uri.joinPath(wf, "env.json");
+            let envUri = vscode.Uri.joinPath(wf, "env.json");
             let pqlUri = vscode.window.activeTextEditor.document.uri;
-            var vars = fs.readFileSync(varsUri.fsPath, { encoding: 'base64' });
+            var env = fs.readFileSync(envUri.fsPath, { encoding: 'base64' });
             var pql = fs.readFileSync(pqlUri.fsPath, { encoding: 'base64' });
             var epid = vscode.workspace.getConfiguration("pql").get("epid")
             var timeout = vscode.workspace.getConfiguration("pql").get("timeout")
@@ -63,7 +63,7 @@ function activate(context) {
                     };
 
                     try {
-                        RunPQL(urlparams, `{"vars": "${vars}", "pql": "${pql}"}`, function (pqlResult) {
+                        RunPQL(urlparams, `{"env": "${env}", "pql": "${pql}"}`, function (pqlResult) {
                             pqlOut.replace(pqlResult);
     
                             //save output in temp file in the workspace    

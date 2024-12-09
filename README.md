@@ -7,10 +7,10 @@ Autoptic PQL is a functional language for timeseries data analysis.
 The extension provides syntax highlighting and runtime access to run PQL programs. You can edit,run and view results directly from Visual Studio Code.
 
 ## Install PQL extension
-- [Download](https://raw.githubusercontent.com/autopticio/vscode-pql/main/downloads/pql-1.0.0.vsix) the extension from the Autoptic repository.
+- [Download](https://raw.githubusercontent.com/autopticio/vscode-pql/main/downloads/pql.vsix) the extension from the Autoptic repository.
 - Install the extension in VSCode
 ```
-code --install-extension pql-1.0.0.vsix
+code --install-extension pql.vsix
 ```
 
 ## Setup
@@ -48,9 +48,5 @@ code --install-extension pql-1.0.0.vsix
 ```
 
 ## Release Notes
-
-### 1.0.0
-
-Initial release
 
 ---
